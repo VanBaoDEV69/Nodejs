@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thuận Phát</title>
+  <link rel="shortcut icon" type="image/png" href="../images/logo/ThuanPhat_Logo.png" />
+  <link rel="stylesheet" href="../layout_admin/assets/css/styles.min.css" />
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar" style=" box-shadow: 0 0 10px rgba(103, 100, 100, 0.5);">
+      <!-- Sidebar scroll-->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./index.html" class="text-nowrap logo-img">
+            <img style="margin-top: 20px;" src="../images/logo/Logo_ThuanPhat.png" width="220" alt=""/>
+          </a>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Trang Chủ</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/admin" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Bảng điều khiển</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Sản Phẩm</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/admin/list-category" aria-expanded="false">
+                <span>
+                  <i class="ti ti-category-2"></i>
+                </span>
+                <span class="hide-menu">Danh mục sản phẩm</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/admin/create-category" aria-expanded="false">
+                <span>
+                  <i class="ti ti-text-plus"></i>
+                </span>
+                <span class="hide-menu">Thêm danh mục mới</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/admin/list-product" aria-expanded="false">
+                <span>
+                  <i class="ti ti-clipboard-list"></i>
+                </span>
+                <span class="hide-menu">Danh sách sản phẩm</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/admin/create-product" aria-expanded="false">
+                <span>
+                  <i class="ti ti-text-plus"></i>
+                </span>
+                <span class="hide-menu">Thêm sản phẩm mới</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Đặt Hàng</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/admin/order" aria-expanded="false">
+                <span>
+                  <i class="ti ti-receipt-2"></i>
+                </span>
+                <span class="hide-menu">Đơn hàng</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/admin/list-contact" aria-expanded="false">
+                <span>
+                  <i class="ti ti-device-mobile-message"></i>
+                </span>
+                <span class="hide-menu">Liên hệ</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Người dùng</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/admin/list-user" aria-expanded="false">
+                <span>
+                  <i class="ti ti-users"></i>
+                </span>
+                <span class="hide-menu">Danh sách người dùng</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <header class="app-header">
+        <nav class="navbar navbar-expand-lg navbar-light" style=" box-shadow: 0 0 10px rgba(103, 100, 100, 0.5); border-radius: 8px;">
+          <ul class="navbar-nav">
+            <li class="nav-item d-block d-xl-none">
+              <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
+                <i class="ti ti-menu-2"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+                <i class="ti ti-bell-ringing"></i>
+                <div class="notification bg-primary rounded-circle"></div>
+              </a>
+            </li>
+          </ul>
+          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+              <a href="/" target="_blank" class="btn btn-primary">Trang chủ</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="<%= req.session.user.image %>" alt="" width="35" height="35" class="rounded-circle">
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+                  <div class="message-body">
+                    <a href="/admin/profile/<%= req.session.user.id %>" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-user fs-6"></i>
+                      <p class="mb-0 fs-3">Thông tin</p>
+                    </a>
+                    <a href="/logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Đăng xuất</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!--  Header End -->
+      <div class="container-fluid">
+        <!--  Row 1 -->
+        <div class="row">
+          <div class="col-lg-8 d-flex align-items-strech">
+            <div class="card w-100">
+              <div class="card-body" style=" box-shadow: 0 0 10px rgba(103, 100, 100, 0.5); border-radius: 8px;">
+                <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                  <div class="mb-3 mb-sm-0">
+                    <h5 class="card-title fw-semibold">Thống kê</h5>
+                    <% let tkTotalPrice = [] %>
+                    <% thongke.forEach(function(tk) { %>
+                      <% tkTotalPrice.push(tk.totalPrice/1000); %>
+                    <% }); %>
+                    <h5 id="dataPrice" style="display: none;" class="card-title fw-semibold"><%= tkTotalPrice %></h5>
+                    <% let tkTotalProduct = [] %>
+                    <% thongke.forEach(function(tk) { %>
+                      <% tkTotalProduct.push(tk.totalProduct); %>
+                    <% }); %>
+                    <h5 id="dataProduct" style="display: none;" class="card-title fw-semibold"><%= tkTotalProduct %></h5>
+                    <% let tkDate = [] %>
+                    <% thongke.forEach(function(tk) { %>
+                      <% tkDate.push(tk._id); %>
+                    <% }); %>
+                    <h5 id="dataDate" style="display: none;" class="card-title fw-semibold"><%= tkDate %></h5>
+                  </div>
+                  <div>
+                    <div style="width: 99px; padding: 7px 15px; text-align: center; border: solid 1px blue; border-radius: 8px;" id="clock"></div>
+                    <script>
+                      const clockDiv = document.getElementById("clock");
+                      function updateClock() {
+                        const now = new Date();
+                        const hours = now.getHours();
+                        const minutes = now.getMinutes();
+                        const seconds = now.getSeconds();
+                        const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                        clockDiv.innerHTML = timeString;
+                      }
+                      setInterval(updateClock, 1000);
+                    </script>
+                  </div>
+                </div>
+                <div id="chart"></div>
+                <div class="d-flex align-items-center">
+                  <div class="me-4">
+                    <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
+                    <span class="fs-2">Doanh thu : ($1000)</span>
+                  </div>
+                  <div>
+                    <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
+                    <span class="fs-2">Sản phẩm : (máy)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-4">
+            <div class="row">
+              <div class="col-lg-12">
+                <!-- Yearly Breakup -->
+                <div class="card overflow-hidden" style=" box-shadow: 0 0 10px rgba(103, 100, 100, 0.5); border-radius: 8px;">
+                  <div class="card-body p-4">
+                    <h5 class="card-title mb-9 fw-semibold">Doanh thu hôm nay</h5>
+                    <div class="row align-items-center">
+                      <div class="col-8">
+                        <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
+                        <span class="fs-2" id="current-date"></span><br><br>
+                        <script>
+                          // Lấy ngày hiện tại
+                          const today = new Date();
+                        
+                          // Lấy ngày, tháng, năm của ngày hiện tại
+                          const day = today.getDate();
+                          const month = today.getMonth() + 1;
+                          const year = today.getFullYear();
+                        
+                          // Hiển thị lịch ngày hôm nay lên HTML
+                          document.getElementById("current-date").textContent = `${day}/${month}/${year}`;
+                        </script>
+                        <!-- DOanh thu hôm nay -->
+                        <% var t = 0 %>
+                        <% dayOrders.forEach(function(order) { %>
+                          <% t += order.cart.totalPrice %>
+                        <% }); %>
+                        <!-- Doanh thu tháng này -->
+                        <% var total = 0 %>
+                        <% orders.forEach(function(order) { %>
+                          <% total += order.cart.totalPrice %>
+                        <% }); %>
+                        <h4 class="fw-semibold mb-3">$<%= t %></h4>
+                        <div class="d-flex align-items-center mb-3">
+                          <span
+                            class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
+                            <i class="ti ti-arrow-up-left text-success"></i>
+                          </span>
+                          <p id="pt" class="text-dark me-1 fs-3 mb-0">+<%= ((t/total)*100).toFixed(0) %>%</p>
+                          <p class="fs-3 mb-0"> vào doanh thu tháng</p>
+                        </div>
+                        
+                      </div>
+                      <div class="col-4">
+                        <div class="d-flex justify-content-center">
+                          <div id="breakup"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <!-- Monthly Earnings -->
+                <div class="card" style=" box-shadow: 0 0 10px rgba(103, 100, 100, 0.5); border-radius: 8px;">
+                  <div class="card-body">
+                    <div class="row alig n-items-start">
+                      <div class="col-8" style="margin-top: 21px;">
+                        <h5 class="card-title mb-9 fw-semibold">Doanh thu tháng này</h5>
+                        
+                        <h4 class="fw-semibold mb-3">$<%= total %></h4>
+                        <div class="d-flex align-items-center pb-1">
+                          <% var totalLast = 100000 %>
+                          <% ordersLast.forEach(function(order1) { %>
+                            <% totalLast += order1.cart.totalPrice %>
+                          <% }); %>
+                          <% var pt = ((total - totalLast)/totalLast*100).toFixed(0) %>
+                          
+                          <% if(pt>=0){ %>
+                            <span
+                              class="me-2 rounded-circle bg-light-danger round-20 d-flex align-items-center justify-content-center">
+                              <i class="ti ti-arrow-up-right text-danger"></i>
+                            </span>
+                            <p class="text-dark me-1 fs-3 mb-0"><%= pt %> %</p>
+                            <p class="fs-3 mb-0">so với tháng trước</p>
+                          <% }else{ %>
+                            <span
+                              class="me-2 rounded-circle bg-light-danger round-20 d-flex align-items-center justify-content-center">
+                              <i class="ti ti-arrow-down-right text-danger"></i>
+                            </span>
+                            <p class="text-dark me-1 fs-3 mb-0"><%= pt %> %</p>
+                            <p class="fs-3 mb-0">so với tháng trước</p>
+                          <% } %>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="d-flex justify-content-end">
+                          <div
+                            class="text-white bg-secondary rounded-circle p-6 d-flex align-items-center justify-content-center">
+                            <i class="ti ti-currency-dollar fs-6"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="earning"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="card w-100" style=" box-shadow: 0 0 10px rgba(103, 100, 100, 0.5); border-radius: 8px;">
+              <div class="card-body p-4">
+                <div class="mb-4">
+                  <h5 class="card-title fw-semibold">Liên hệ mới</h5>
+                </div>
+                <ul class="timeline-widget mb-0 position-relative mb-n5">
+                  <% contacts.forEach(contact => { %>
+                  <li class="timeline-item d-flex position-relative overflow-hidden">
+                    <div class="timeline-time text-dark flex-shrink-0 text-end">
+                      <%= contact.dateSend.toLocaleTimeString( 'vi-VN', {hour12: false}) %>
+                      <!-- <%= contact.dateSend.toLocaleString() %> -->
+                    </div>
+                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
+                      <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
+                      <span class="timeline-badge-border d-block flex-shrink-0"></span>
+                    </div>
+                    <div class="timeline-desc fs-3 text-dark mt-n1">
+                      <form action="/admin/update-contact/<%= contact._id %>" method="POST">
+                        <button style="border: none; background-color: white;"><%= contact.email %></button>
+                      </form>
+                    </div>
+                  </li>
+                  <% }) %>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 d-flex align-items-stretch">
+            <div class="card w-100" style=" box-shadow: 0 0 10px rgba(103, 100, 100, 0.5); border-radius: 8px;">
+              <div class="card-body p-4">
+                <h5 class="card-title fw-semibold mb-4">Đơn hàng mới</h5>
+                <div class="table-responsive">
+                  <table class="table text-nowrap mb-0 align-middle">
+                    <thead class="text-dark fs-4">
+                      <tr>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Họ và tên</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Tổng giá</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Ngày đặt</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Địa chỉ</h6>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% newOrders.forEach(order => { %>
+                      <tr>
+                        <td class="border-bottom-0">
+                            <h6 class="fw-semibold mb-1"><%= order.name  %></h6>
+                            <span class="fw-normal"><%= order.phone  %></span>                          
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal">$<%= order.cart.totalPrice  %></p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0 fs-4"><%= order.createdAt.toLocaleString() %></h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal"><%= order.address %></p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <a href="/admin/detail-order/<%= order._id %>" class="btn btn-primary">Xem</a>
+                        </td>
+                      </tr> 
+                      <% }) %>
+                                  
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-12 d-flex align-items-stretch">
+          <div class="card w-100" style=" box-shadow: 0 0 10px rgba(103, 100, 100, 0.5); border-radius: 8px;">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold mb-4">Sản phẩm bán chạy</h5>
+              <div class="row">
+                <% products.forEach((product) => { %>
+                <div class="col-sm-6 col-xl-3">
+                  <div class="card overflow-hidden rounded-2" style=" box-shadow: 0 0 10px rgba(103, 100, 100, 0.5); border-radius: 8px;">
+                    <div class="position-relative">
+                      <a href=""><img style="height: 255px; width: 255px;" src="<%= product.image %>" class="card-img-top rounded-0" alt="..."></a>
+                      <a href="" style="width: 35px; text-align: center;" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart">
+                        <p style="margin: auto;"><%= productCount[product._id] %></p>
+                      </a>                     
+                    </div>
+                    <div class="card-body pt-3 p-4">
+                      <h6 class="fw-semibold fs-4"><%= product.name %></h6>
+                      <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="fw-semibold fs-4 mb-0">$<%= product.price %> 
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% }); %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        
+        
+      </div>
+    </div>
+  </div>
+  <script src="../layout_admin/assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../layout_admin/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../layout_admin/assets/js/sidebarmenu.js"></script>
+  <script src="../layout_admin/assets/js/app.min.js"></script>
+  <script src="../layout_admin/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="../layout_admin/assets/libs/simplebar/dist/simplebar.js"></script>
+  <!-- <script src="../layout_admin/assets/js/dashboard.js"></script> -->
+</body>
+
+</html>
+<script>
+  // data tổng tiền
+  let dataPrice = document.getElementById("dataPrice").innerHTML;
+  let arr = dataPrice.split(',');
+  arr.reverse();
+
+  // data ngày
+  let dataDate = document.getElementById("dataDate").innerHTML;
+  let arrDate = dataDate.split(',');
+  arrDate.reverse();
+
+  // data tổng sản phẩm
+  let dataProduct = document.getElementById("dataProduct").innerHTML;
+  let arrdataProduct = dataProduct.split(',');
+  arrdataProduct.reverse();
+  
+  var chart = {
+    series: [
+      { name: "Doanh thu", data: arr },
+      { name: "Sản phẩm", data: arrdataProduct },
+    ],
+
+    chart: {
+      type: "bar",
+      height: 345,
+      offsetX: -15,
+      toolbar: { show: true },
+      foreColor: "#adb0bb",
+      fontFamily: 'inherit',
+      sparkline: { enabled: false },
+    },
+
+
+    colors: ["#5D87FF", "#49BEFF"],
+
+
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: "35%",
+        borderRadius: [6],
+        borderRadiusApplication: 'end',
+        borderRadiusWhenStacked: 'all'
+      },
+    },
+    markers: { size: 0 },
+
+    dataLabels: {
+      enabled: false,
+    },
+
+
+    legend: {
+      show: false,
+    },
+
+
+    grid: {
+      borderColor: "rgba(0,0,0,0.1)",
+      strokeDashArray: 3,
+      xaxis: {
+        lines: {
+          show: false,
+        },
+      },
+    },
+
+    xaxis: {
+      type: "category",
+      categories: arrDate,
+      labels: {
+        style: { cssClass: "grey--text lighten-2--text fill-color" },
+      },
+    },
+
+
+    yaxis: {
+      show: true,
+      min: 0,
+      max: 100,
+      tickAmount: 4,
+      labels: {
+        style: {
+          cssClass: "grey--text lighten-2--text fill-color",
+        },
+      },
+    },
+    stroke: {
+      show: true,
+      width: 3,
+      lineCap: "butt",
+      colors: ["transparent"],
+    },
+
+
+    tooltip: { theme: "light" },
+
+    responsive: [
+      {
+        breakpoint: 600,
+        options: {
+          plotOptions: {
+            bar: {
+              borderRadius: 3,
+            }
+          },
+        }
+      }
+    ]
+
+
+  };
+
+  var chart = new ApexCharts(document.querySelector("#chart"), chart);
+  chart.render();
+
+
+  // =====================================
+  // Breakup
+  // =====================================
+
+  // const today = new Date();
+  // const day = today.getDate();
+  // const month = today.getMonth() + 1;
+  // const year = today.getFullYear();
+  
+  const dayAt = `${day}/${month}/${year}`; 
+  const str = document.getElementById("pt").innerHTML;
+  const pt = parseFloat(str.replace(/[^0-9]/g, ""));;
+  const ptc = 100 - pt;
+
+
+  var breakup = {
+    color: "#adb5bd",
+    series: [pt, ptc, 0],
+    
+    labels: [dayAt, "Ngày trước", ""],
+    chart: {
+      width: 180,
+      type: "donut",
+      fontFamily: "Plus Jakarta Sans', sans-serif",
+      foreColor: "#adb0bb",
+    },
+    plotOptions: {
+      pie: {
+        startAngle: 0,
+        endAngle: 360,
+        donut: {
+          size: '75%',
+        },
+      },
+    },
+    stroke: {
+      show: false,
+    },
+
+    dataLabels: {
+      enabled: false,
+    },
+
+    legend: {
+      show: false,
+    },
+    colors: ["#5D87FF", "#ecf2ff", "#F9F9FD"],
+
+    responsive: [
+      {
+        breakpoint: 991,
+        options: {
+          chart: {
+            width: 150,
+          },
+        },
+      },
+    ],
+    tooltip: {
+      theme: "dark",
+      fillSeriesColor: false,
+    },
+  };
+
+  var chart = new ApexCharts(document.querySelector("#breakup"), breakup);
+  chart.render();
+
+
+
+  // =====================================
+  // Earning
+  // =====================================
+  
+  
+
+
+  var earning = {
+    chart: {
+      id: "sparkline3",
+      type: "area",
+      height: 60,
+      sparkline: {
+        enabled: true,
+      },
+      group: "sparklines",
+      fontFamily: "Plus Jakarta Sans', sans-serif",
+      foreColor: "#adb0bb",
+    },
+    series: [
+      {
+        name: "Số lượng sản phẩm",
+        color: "#49BEFF",
+        data: arrdataProduct,
+      },
+    ],
+    stroke: {
+      curve: "smooth",
+      width: 2,
+    },
+    fill: {
+      colors: ["#f3feff"],
+      type: "solid",
+      opacity: 0.05,
+    },
+
+    markers: {
+      size: 0,
+    },
+    tooltip: {
+      theme: "dark",
+      fixed: {
+        enabled: true,
+        position: "right",
+      },
+      x: {
+        show: false,
+      },
+    },
+  };
+  new ApexCharts(document.querySelector("#earning"), earning).render();
+</script>

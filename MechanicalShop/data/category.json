@@ -1,0 +1,15 @@
+[
+    {
+    "name": "Lathe",
+    "description": "A machine that rotates a workpiece about an axis of rotation to perform various operations such as cutting, sanding, drilling, and facing."
+    },
+    {
+    "name": "Milling Machine",
+    "description": "A machine tool that uses rotating multi-point cutting tools to remove material from a workpiece."
+    },
+    {
+    "name": "Drilling Machine",
+    "description": "A machine tool used to drill holes in various materials."
+    }
+      
+]

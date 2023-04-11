@@ -1,0 +1,23 @@
+[  
+    {    
+        "name": "Máy phay CNC",    
+        "description": "Máy phay CNC cho gia công kim loại",    
+        "price": 10000,    
+        "image": "https://top10dienbien.com/wp-content/uploads/2022/10/avatar-cute-11.jpg",    
+        "category": "Máy móc cơ khí"  
+    },  
+    {   
+        "name": "Máy hàn điện tử",    
+        "description": "Máy hàn điện tử cho hàn các loại kim loại",    
+        "price": 5000,    
+        "image": "https://demoda.vn/wp-content/uploads/2022/01/anh-dai-dien-nguoi-giau-mat.jpg",    
+        "category": "Máy móc cơ khí"  
+    },  
+    {    
+        "name": "Máy tiện CNC",    
+        "description": "Máy tiện CNC cho gia công kim loại",    
+        "price": 12000,    
+        "image": "https://img2.thuthuatphanmem.vn/uploads/2018/11/30/anh-dai-dien-anime-dep_104204759.jpg",    
+        "category": "Máy móc cơ khí"  
+    }
+]

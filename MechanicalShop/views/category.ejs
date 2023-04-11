@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Category</title>
+</head>
+<body>
+    <h1>Category</h1>
+    <ul>
+        <% categories.forEach(function(category) { %>
+            <li><a href="/category/<%= category._id %>"><%= category.name %></a></li>
+        <% }); %>
+    </ul>
+</body>
+</html>
